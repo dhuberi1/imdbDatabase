@@ -1,0 +1,30 @@
+titleId	title	region	isAdult	startYear	genres	runtime	directors
+tt0000001	Карменсіта	UA	0	1894	Documentary,Short	1	nm0005690
+tt0000001	Carmencita	DE	0	1894	Documentary,Short	1	nm0005690
+tt0000001	Carmencita - spanyol tánc	HU	0	1894	Documentary,Short	1	nm0005690
+tt0000001	Καρμενσίτα	GR	0	1894	Documentary,Short	1	nm0005690
+tt0000001	Карменсита	RU	0	1894	Documentary,Short	1	nm0005690
+tt0000001	Carmencita	US	0	1894	Documentary,Short	1	nm0005690
+tt0000001	Carmencita	\N	0	1894	Documentary,Short	1	nm0005690
+tt0000001	カルメンチータ	JP	0	1894	Documentary,Short	1	nm0005690
+tt0000002	Le clown et ses chiens	\N
+tt0000002	A bohóc és kutyái	HU	0	1892	Animation,Short	5	nm0721526
+tt0000002	Le clown et ses chiens	FR	0	1892	Animation,Short	5	nm0721526
+tt0000002	Der Clown und seine Hunde	DE	0	1892	Animation,Short	5	nm0721526
+tt0000002	Clovnul si cainii sai	RO	0	1892	Animation,Short	5	nm0721526
+tt0000002	Клоун и его собаки	RU	0	1892	Animation,Short	5	nm0721526
+tt0000002	The Clown and His Dogs	US	0	1892	Animation,Short	5	nm0721526
+tt0000002	道化師と犬	JP	0	1892	Animation,Short	5	nm0721526
+tt0000003	Sarmanul Pierrot	RO
+tt0000003	Szegény Pierrot	HU	0	1892	Animation,Comedy,Romance	4	nm0721526
+tt0000003	哀れなピエロ	JP	0	1892	Animation,Comedy,Romance	4	nm0721526
+tt0000003	Бедный Пьеро	RU	0	1892	Animation,Comedy,Romance	4	nm0721526
+tt0000003	Pauvre Pierrot	\N	0	1892	Animation,Comedy,Romance	4	nm0721526
+tt0000003	Poor Pierrot	GB	0	1892	Animation,Comedy,Romance	4	nm0721526
+tt0000003	Pauvre Pierrot	FR	0	1892	Animation,Comedy,Romance	4	nm0721526
+tt0000003	Armer Pierrot	DE	0	1892	Animation,Comedy,Romance	4	nm0721526
+tt0000004	Un bon bock	\N
+tt0000004	Ein gutes Glas Bier	DE	0	1892	Animation,Short	12	nm0721526
+tt0000004	Un ţap de bere	RO	0	1892	Animation,Short	12	nm0721526
+tt0000004	Un bon bock	FR	0	1892	Animation,Short	12	nm0721526
+tt0000004	Полная кружка пива	RU	0	1892	Animation,Short	12	nm0721526
