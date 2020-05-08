@@ -109,16 +109,17 @@ with open("title.crew.tsv") as fin, open("dircetors-small.txt", 'w') as fout:
 # 		writer.writerow(second[i])
 # 		i += 1
 
-with open("movies-small.txt", 'r') as fin: 
-	file1 = open("small-direc.txt","a") 
+with open("movies-small.txt", 'r') as fin, open("small-direc.txt", 'w') as fout: 
+	# file1 = open("small-direc.txt","a") 
 	reader = csv.reader(fin, dialect='excel-tab')
+	writer = csv.writer(fout, delimiter='\t')
 	count = 0
 	first = 0
 	li2 = copy.copy(direcTitlesmall)  
 	li2.pop(0)
 	for i in range(30):
 		print(li2[i])
-	next(fin)
+	# next(fin)
 	for row in reader: 
 		if (li2[count] == row[0]):
 			final.append(li2[count])
@@ -128,13 +129,8 @@ with open("movies-small.txt", 'r') as fin:
 			final.append(li2[count])
 			second.append(row[7])
 	i = 0
-
-	for i in range(len(final)):
-		file1.writelines(final[i] + " ")
-		file1.writelines(second[i] + "\n")
-
-		i += 1
-	file1.close
+	zip(final, second)
+	writer.writerows(zip(final,second))
 
 # #Cleaning the file and creating Movies relation 
 with open("title.akasCleaned.tsv", 'r') as fin, open("movies.txt", 'w') as fout: 
@@ -167,15 +163,13 @@ with open("title.akasCleaned.tsv", 'r') as fin, open("movies.txt", 'w') as fout:
 		else: 
 			direc += 1
 		first += 1
-		#just a test
-		# if (count == 1000):
-		# 	print(row) 
 		writer.writerow(row)
 
 # #Creating movies-small
 with open("title.akasCleaned.tsv", 'r') as fin, open("movies-small.txt", 'w') as fout: 
 	reader = csv.reader(fin, dialect='excel-tab')
-	writer = csv.writer(fout, dialect='excel-tab')
+	writer = csv.writer(fout, delimiter='\t')
+	# writer = csv.writer(fout, dialect='excel-tab')
 	count = 0
 	index = 0
 	direc = 0
@@ -220,22 +214,22 @@ with open("title.akasCleaned.tsv", 'r') as fin, open("movies-small.txt", 'w') as
 # 		writer.writerow(row)
 
 # Creating UserRatings-small relation: 
-# with open("title.ratings.tsv", 'r') as fin, open("UserRatings-small.txt", 'w') as fout: 
-# 	reader = csv.reader(fin, dialect='excel-tab')
-# 	writer = csv.writer(fout, dialect='excel-tab')
-# 	count = 0
-# 	first = 0
-# 	for row in reader: 
-# 		count += 1
-# 		if (count > 30):
-# 			break
-# 		if (count > 1):
-# 			row[1] = Decimal(row[1])
-# 			row[2] = int(row[2])
-# 			print(type(row[0]))
-# 			print(type(row[1]))
-# 			print(type(row[2]))
-# 		writer.writerow(row)
+with open("title.ratings.tsv", 'r') as fin, open("UserRatings-small.txt", 'w') as fout: 
+	reader = csv.reader(fin, dialect='excel-tab')
+	writer = csv.writer(fout, delimiter='\t')
+	count = 0
+	first = 0
+	for row in reader: 
+		count += 1
+		if (count > 30):
+			break
+		if (count > 1):
+			row[1] = Decimal(row[1])
+			row[2] = int(row[2])
+			print(type(row[0]))
+			print(type(row[1]))
+			print(type(row[2]))
+		writer.writerow(row)
 
 # Getting Actors and making actors.txt (actors relation): 
 with open("name.basics.tsv", 'r') as fin, open("actors.txt", 'w') as fout: 
@@ -277,46 +271,48 @@ with open("name.basics.tsv", 'r') as fin, open("actors.txt", 'w') as fout:
 			del row[1]
 			del row[1]
 			writer.writerow(row)
-
+actors = []
 # Getting Actors and making actors.txt (actors-small relation): 
 with open("name.basics.tsv", 'r') as fin, open("actors-small.txt", 'w') as fout: 
 	reader = csv.reader(fin, dialect='excel-tab')
-	writer = csv.writer(fout, dialect='excel-tab')
+	writer = csv.writer(fout, delimiter='\t')
 	count = 0
 	first = 0
 	ageIndex = 0
 	for row in reader: 
 		count += 1
 		if count > 30:
-			break	
-		del row[0]
-		del row[3]
+			break
+		# del row[0]
+		# del row[3]
+		actors.append(row[0])
+		del row[4]
 		if (first != 0):
-			if ('\\N' not in row[1]):
-				if ('\\N' in row[2]):
-					ageVal = 2020 - int(row[1])
+			if ('\\N' not in row[2]):
+				if ('\\N' in row[3]):
+					ageVal = 2020 - int(row[2])
 					age.append(ageVal)
-					actorssmall.append(row[0])
-					knownForTitlessmall.append(row[3])
+					actorssmall.append(row[1])
+					knownForTitlessmall.append(row[4])
 					row.append(int(age[ageIndex]))
 				else: 
-					ageVal = (int(row[2]) - int(row[1]))
+					ageVal = (int(row[3]) - int(row[2]))
 					age.append(ageVal)
-					actorssmall.append(row[0])
-					knownForTitlessmall.append(row[3])
+					actorssmall.append(row[1])
+					knownForTitlessmall.append(row[4])
 					row.append(int(age[ageIndex]))
 				ageIndex += 1
 			else: 
-				del row[0]
-				del row[0]
-				del row[0]
-				del row[0]
+				del row[1]
+				del row[1]
+				del row[1]
+				del row[1]
 		else: 
 			row.append('Age')
 		first += 1
 		if row:
-			del row[1]
-			del row[1]
+			del row[2]
+			del row[2]
 			writer.writerow(row)
 
 # Removing headers: 
