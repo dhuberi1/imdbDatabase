@@ -47,7 +47,6 @@ CREATE TABLE Movies (
 
 LOAD DATA LOCAL INFILE 'small-movies.txt' INTO TABLE Movies;
 */
---LOAD DATA LOCAL INFILE 'movies-small.txt' INTO TABLE Movies;
 
 CREATE TABLE Actors (
     id                VARCHAR(9)    NOT NULL,
@@ -69,6 +68,21 @@ CREATE TABLE UserReviews (
 
 LOAD DATA LOCAL INFILE 'UserRatings-small.txt' INTO TABLE UserReviews;
 
+-- Create a stored procedure named ShowMovies which will return the values of a movie with a specified titleID
+delimiter //
+DROP PROCEDURE IF EXISTS ShowMovies //
+CREATE PROCEDURE ShowMovies(IN MOV VARCHAR(9))
+BEGIN
+IF EXISTS(SELECT titleID FROM Movies WHERE titleID=MOV) THEN
+    SELECT *
+    FROM Movies
+    WHERE titleID = MOV;
+ELSE
+    SELECT 'ERROR: ', 'Incorrect titleID' as 'Result';
+END IF;
+END;
+//
+delimiter ;
 
 -- Example query.
 /*
